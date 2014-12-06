@@ -34,7 +34,16 @@ public class GameState : MonoBehaviour {
 		caughtBall = ball;
 		caughtBall.gameObject.renderer.enabled = false;
 
-		Freeze(freezeTime);
+		if (ball.isInGoal == null)
+		{
+			Freeze(freezeTime);
+		}
+		else
+		{
+			ball.isInGoal.Score();
+			Reset();
+		}
+
 	}
 
 	public void SetTimeScale(float timeScale)
@@ -57,5 +66,17 @@ public class GameState : MonoBehaviour {
 
 		SetTimeScale(1.0f);
 		unfreezeTime = float.PositiveInfinity;
+	}
+
+	private void Reset()
+	{
+		for (int i=1; i<=4; i++)
+		{
+			GameObject.Find("player" + i).GetComponent<Player>().Reset();
+		}
+
+		GameObject.Find("ball").GetComponent<Ball>().Reset();
+
+		Freeze(3f);
 	}
 }

@@ -9,11 +9,13 @@ public class Player : MonoBehaviour {
 
 	public Vector2 inputVector;
 
+	private Vector3 initialPosition;
 
 	// Use this for initialization
 	void Start ()
 	{
 		inputVector = Vector2.zero;
+		initialPosition = transform.position;
 	}
 	
 	// Update is called once per frame
@@ -39,5 +41,11 @@ public class Player : MonoBehaviour {
 			GameState gameState = GameObject.Find("camera").GetComponent<GameState>();
 			gameState.OnCatch(this, collision.gameObject.GetComponent<Ball>());
 		}
+	}
+
+	public void Reset()
+	{
+		transform.position = initialPosition;
+		rigidbody2D.velocity = Vector2.zero;
 	}
 }
