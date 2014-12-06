@@ -34,7 +34,7 @@ public class GameState : MonoBehaviour {
 		caughtBall = ball;
 		caughtBall.gameObject.renderer.enabled = false;
 
-		if (ball.isInGoal == null)
+		if (ball.isInGoal == null || thrower.goal != ball.isInGoal)
 		{
 			Freeze(freezeTime);
 		}

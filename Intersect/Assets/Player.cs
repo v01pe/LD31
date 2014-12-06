@@ -6,6 +6,7 @@ public class Player : MonoBehaviour {
 	public float speed;
 
 	public int nr;
+	public Goal goal;
 
 	public Vector2 inputVector;
 

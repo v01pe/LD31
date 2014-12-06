@@ -105,6 +105,10 @@ Prefab:
       propertyPath: m_Name
       value: player1
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 849b73d4b53234ed4a7107525bcf2332, type: 2}
+      propertyPath: goal
+      value: 
+      objectReference: {fileID: 1232488471}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 849b73d4b53234ed4a7107525bcf2332, type: 2}
   m_RootGameObject: {fileID: 455895380}
@@ -141,6 +145,10 @@ Prefab:
       propertyPath: m_Name
       value: player2
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 849b73d4b53234ed4a7107525bcf2332, type: 2}
+      propertyPath: goal
+      value: 
+      objectReference: {fileID: 1232488471}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 849b73d4b53234ed4a7107525bcf2332, type: 2}
   m_RootGameObject: {fileID: 2025449349}
@@ -349,6 +357,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 1
   nr: 1
+  goal: {fileID: 1232488471}
   inputVector: {x: 0, y: 0}
 --- !u!50 &455895382
 Rigidbody2D:
@@ -450,6 +459,10 @@ Prefab:
       propertyPath: m_Name
       value: player3
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 849b73d4b53234ed4a7107525bcf2332, type: 2}
+      propertyPath: goal
+      value: 
+      objectReference: {fileID: 1072345071}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 849b73d4b53234ed4a7107525bcf2332, type: 2}
   m_RootGameObject: {fileID: 641802584}
@@ -521,6 +534,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 1
   nr: 3
+  goal: {fileID: 1072345071}
   inputVector: {x: 0, y: 0}
 --- !u!50 &641802586
 Rigidbody2D:
@@ -666,6 +680,10 @@ Prefab:
       propertyPath: m_Name
       value: player4
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 849b73d4b53234ed4a7107525bcf2332, type: 2}
+      propertyPath: goal
+      value: 
+      objectReference: {fileID: 1072345071}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 849b73d4b53234ed4a7107525bcf2332, type: 2}
   m_RootGameObject: {fileID: 1297611045}
@@ -978,6 +996,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 1
   nr: 4
+  goal: {fileID: 1072345071}
   inputVector: {x: 0, y: 0}
 --- !u!50 &1297611047
 Rigidbody2D:
@@ -1372,6 +1391,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 1
   nr: 2
+  goal: {fileID: 1232488471}
   inputVector: {x: 0, y: 0}
 --- !u!50 &2025449351
 Rigidbody2D:
