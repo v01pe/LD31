@@ -157,9 +157,10 @@ GameObject:
   - 23: {fileID: 360104621}
   - 50: {fileID: 360104620}
   - 58: {fileID: 360104619}
+  - 114: {fileID: 360104624}
   m_Layer: 0
   m_Name: ball
-  m_TagString: Untagged
+  m_TagString: Ball
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -182,10 +183,10 @@ Rigidbody2D:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 360104618}
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: .5
   m_AngularDrag: .0500000007
   m_GravityScale: 1
-  m_FixedAngle: 0
+  m_FixedAngle: 1
   m_IsKinematic: 0
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -229,6 +230,18 @@ Transform:
   m_LocalScale: {x: .100000001, y: .100000001, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
+--- !u!114 &360104624
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 360104618}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2be0997a76cbe406e91a1a879e29083c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 5
 --- !u!1001 &689449031
 Prefab:
   m_ObjectHideFlags: 0
@@ -282,11 +295,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400000, guid: 849b73d4b53234ed4a7107525bcf2332, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -3.73949814
+      value: -.35030365
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 849b73d4b53234ed4a7107525bcf2332, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 3.51412535
+      value: .380719185
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 849b73d4b53234ed4a7107525bcf2332, type: 2}
       propertyPath: m_LocalPosition.z
@@ -318,7 +331,7 @@ Prefab:
       objectReference: {fileID: 2100000, guid: fd6c0d96402cb46c1a01d499ffefa40b, type: 2}
     - target: {fileID: 100000, guid: 849b73d4b53234ed4a7107525bcf2332, type: 2}
       propertyPath: m_Name
-      value: player
+      value: player1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 849b73d4b53234ed4a7107525bcf2332, type: 2}
@@ -410,8 +423,8 @@ GameObject:
   - 50: {fileID: 1297611047}
   - 114: {fileID: 1297611046}
   m_Layer: 0
-  m_Name: player
-  m_TagString: Untagged
+  m_Name: player1
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -428,7 +441,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 636498ff410d246a389cd4552518de70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 3
   nr: 1
+  inputVector: {x: 0, y: 0}
 --- !u!50 &1297611047
 Rigidbody2D:
   m_ObjectHideFlags: 0
@@ -440,7 +455,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: .0500000007
   m_GravityScale: 1
-  m_FixedAngle: 0
+  m_FixedAngle: 1
   m_IsKinematic: 0
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -494,7 +509,7 @@ Transform:
   m_PrefabInternal: {fileID: 696557022}
   m_GameObject: {fileID: 1297611045}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.73949814, y: 3.51412535, z: 0}
+  m_LocalPosition: {x: -.35030365, y: .380719185, z: 0}
   m_LocalScale: {x: .200000003, y: .200000003, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -881,3 +896,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   thrower: {fileID: 0}
+  caughtBall: {fileID: 0}

@@ -3,17 +3,17 @@ using System.Collections;
 
 public class Player : MonoBehaviour {
 
-	public static float speed = 3.0f;
+	public float speed;
 
 	public int nr;
 
-	private Vector2 inputVector;
+	public Vector2 inputVector;
 
 
 	// Use this for initialization
 	void Start ()
 	{
-
+		inputVector = Vector2.zero;
 	}
 	
 	// Update is called once per frame
@@ -34,7 +34,10 @@ public class Player : MonoBehaviour {
 
 	void OnCollisionEnter2D(Collision2D collision)
 	{
-		GameState gameState = GameObject.Find("camera").GetComponent<GameState>();
-		gameState.thrower = this;
+		if (collision.gameObject.tag == "Ball")
+		{
+			GameState gameState = GameObject.Find("camera").GetComponent<GameState>();
+			gameState.OnCatch(this, collision.gameObject.GetComponent<Ball>());
+		}
 	}
 }
