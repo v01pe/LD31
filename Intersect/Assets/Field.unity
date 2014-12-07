@@ -2504,7 +2504,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   freezeTime: 2
   countdownLabel: {fileID: 388861554}
-  timeScaleRange: {x: 2.5, y: .300000012}
+  timeScaleRange: {x: 2.5, y: .400000006}
   timeScaleDuration: .699999988
   timeScaleLerpExp: .5
 --- !u!82 &2102646901

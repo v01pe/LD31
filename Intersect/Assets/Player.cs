@@ -27,7 +27,7 @@ public class Player : MonoBehaviour {
 
 //		print("x " + inputVector.x + " y " + inputVector.y);
 
-		Vector2 targetVelocity = (inputVector.magnitude == 0) ? Vector2.zero : inputVector.normalized * speed;
+		Vector2 targetVelocity = (inputVector.magnitude == 0) ? Vector2.zero : inputVector.normalized * Mathf.Min(inputVector.magnitude, 1f) * speed;
 
 //		Vector2 currentVelocity = rigidbody2D.velocity;
 //		float currentSpeed = currentVelocity.magnitude;
