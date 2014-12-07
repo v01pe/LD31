@@ -6,35 +6,50 @@ public class GameState : MonoBehaviour {
 	public float freezeTime;
 	public GUIText countdownLabel;
 
+	public Vector2 timeScaleRange;
+	public float timeScaleDuration;
+	public float timeScaleLerpExp;
+
 	private Player thrower;
 	private Ball caughtBall;
 
-//	private float startFixedDeltaTimeTime;
-	private float unfreezeTime;
+	private float startFixedDeltaTimeTime;
+	private bool frozen;
+	private float unfreezeTimestamp;
 
 	void Start ()
 	{
 		thrower = null;
 		caughtBall = null;
-
-//		startFixedDeltaTimeTime = Time.fixedDeltaTime;
-		unfreezeTime = float.PositiveInfinity;
-
 		countdownLabel.enabled = false;
+
+		startFixedDeltaTimeTime = Time.fixedDeltaTime;
+
+		unfreezeTimestamp = 0f;
+		Freeze(0.5f);
 	}
 
 	void Update ()
 	{
-		float timeToUnfreeze = unfreezeTime - Time.realtimeSinceStartup;
-		if (timeToUnfreeze < 10)
+		if (frozen)
 		{
-			countdownLabel.enabled = true;
-			countdownLabel.text = Mathf.Ceil(timeToUnfreeze).ToString();
+			float timeToUnfreeze = unfreezeTimestamp - Time.realtimeSinceStartup;
+			if (timeToUnfreeze <= 10f)
+			{
+				countdownLabel.enabled = true;
+				countdownLabel.text = Mathf.Ceil(timeToUnfreeze).ToString();
+			}
+			if (Time.realtimeSinceStartup >= unfreezeTimestamp)
+			{
+				Unfreeze();
+				countdownLabel.enabled = false;
+			}
 		}
-		if (Time.realtimeSinceStartup >= unfreezeTime)
+		else
 		{
-			Unfreeze();
-			countdownLabel.enabled = false;
+			float timeScaleLerp = Mathf.Clamp01((Time.realtimeSinceStartup - unfreezeTimestamp) / timeScaleDuration);
+			timeScaleLerp = Mathf.Pow(timeScaleLerp, timeScaleLerpExp);
+			SetTimeScale(Mathf.Lerp(timeScaleRange[0], timeScaleRange[1], timeScaleLerp));
 		}
 	}
 
@@ -59,13 +74,14 @@ public class GameState : MonoBehaviour {
 	public void SetTimeScale(float timeScale)
 	{
 		Time.timeScale = timeScale;
-//		Time.fixedDeltaTime = startFixedDeltaTimeTime * timeScale;
+		Time.fixedDeltaTime = startFixedDeltaTimeTime * timeScale;
 	}
 
 	private void Freeze(float duration)
 	{
-		Time.timeScale = 0.0f;
-		unfreezeTime = Time.realtimeSinceStartup + duration;
+		Time.timeScale = 0f;
+		frozen = true;
+		unfreezeTimestamp = Time.realtimeSinceStartup + duration;
 	}
 
 	private void Unfreeze()
@@ -76,8 +92,8 @@ public class GameState : MonoBehaviour {
 			caughtBall.OnThrow(thrower);
 		}
 
-		SetTimeScale(1.0f);
-		unfreezeTime = float.PositiveInfinity;
+		SetTimeScale(timeScaleRange.x);
+		frozen = false;
 	}
 
 	private void Reset()
