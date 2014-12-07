@@ -3,10 +3,11 @@ using System.Collections;
 
 public class GameState : MonoBehaviour {
 
-	public static float freezeTime = 2.0f;
+	public float freezeTime;
+	public GUIText countdownLabel;
 
-	public Player thrower;
-	public Ball caughtBall;
+	private Player thrower;
+	private Ball caughtBall;
 
 //	private float startFixedDeltaTimeTime;
 	private float unfreezeTime;
@@ -18,13 +19,22 @@ public class GameState : MonoBehaviour {
 
 //		startFixedDeltaTimeTime = Time.fixedDeltaTime;
 		unfreezeTime = float.PositiveInfinity;
+
+		countdownLabel.enabled = false;
 	}
 
 	void Update ()
 	{
+		float timeToUnfreeze = unfreezeTime - Time.realtimeSinceStartup;
+		if (timeToUnfreeze < 10)
+		{
+			countdownLabel.enabled = true;
+			countdownLabel.text = Mathf.Ceil(timeToUnfreeze).ToString();
+		}
 		if (Time.realtimeSinceStartup >= unfreezeTime)
 		{
 			Unfreeze();
+			countdownLabel.enabled = false;
 		}
 	}
 
@@ -60,9 +70,11 @@ public class GameState : MonoBehaviour {
 
 	private void Unfreeze()
 	{
-		caughtBall.gameObject.renderer.enabled = true;
-		caughtBall.OnThrow(thrower);
-
+		if (caughtBall != null)
+		{
+			caughtBall.gameObject.renderer.enabled = true;
+			caughtBall.OnThrow(thrower);
+		}
 
 		SetTimeScale(1.0f);
 		unfreezeTime = float.PositiveInfinity;
@@ -70,6 +82,9 @@ public class GameState : MonoBehaviour {
 
 	private void Reset()
 	{
+		thrower = null;
+		caughtBall = null;
+
 		for (int i=1; i<=4; i++)
 		{
 			GameObject.Find("player" + i).GetComponent<Player>().Reset();

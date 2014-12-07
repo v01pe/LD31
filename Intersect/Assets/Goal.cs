@@ -3,7 +3,10 @@ using System.Collections;
 
 public class Goal : MonoBehaviour {
 
-	public int score;
+	public GUIText scoreLabel;
+
+	private int score;
+
 	// Use this for initialization
 	void Start ()
 	{
@@ -35,5 +38,6 @@ public class Goal : MonoBehaviour {
 	public void Score()
 	{
 		score++;
+		scoreLabel.text = "score: " + score;
 	}
 }
