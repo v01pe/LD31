@@ -44,6 +44,12 @@ public class Player : MonoBehaviour {
 		}
 	}
 
+	public void OnThrow()
+	{
+		AudioSource[] sounds = GetComponents<AudioSource> ();
+		sounds[1].Play();
+	}
+
 	public void Reset()
 	{
 		transform.position = initialPosition;

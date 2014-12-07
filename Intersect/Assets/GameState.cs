@@ -66,6 +66,7 @@ public class GameState : MonoBehaviour {
 		else
 		{
 			ball.isInGoal.Score();
+			gameObject.GetComponent<AudioSource>().Play();
 			Reset();
 		}
 
@@ -90,6 +91,7 @@ public class GameState : MonoBehaviour {
 		{
 			caughtBall.gameObject.renderer.enabled = true;
 			caughtBall.OnThrow(thrower);
+			thrower.OnThrow();
 		}
 
 		SetTimeScale(timeScaleRange.x);
